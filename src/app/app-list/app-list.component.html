@@ -1,0 +1,62 @@
+<div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearch($event)"
+      placeholder="Search items..."
+    />
+  </div>
+  
+  <table class="item-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Index</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Even</th>
+        <th>Odd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let item of filteredItems;
+          let i = index;
+          let isFirst = first;
+          let isLast = last;
+          let isEven = even;
+          let isOdd = odd;
+          trackBy: trackById
+        "
+      >
+        <td>{{ item.id }}</td>
+        <td>
+          <input
+            type="text"
+            [value]="item.name"
+            (input)="onNameChange(i, $event)"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            [value]="item.description"
+            (input)="onDescriptionChange(i, $event)"
+          />
+        </td>
+        <td>{{ i }}</td>
+        <td>{{ isFirst ? 'Yes' : 'No' }}</td>
+        <td>{{ isLast ? 'Yes' : 'No' }}</td>
+        <td>{{ isEven ? 'Yes' : 'No' }}</td>
+        <td>{{ isOdd ? 'Yes' : 'No' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <p class="explanation">
+    This Angular table is optimized using the `ngFor` directive with the `trackBy` function. Instead of tracking items by their content, which can be inefficient, we use the `trackBy` function to track items by an immutable field, the `id` in this case. This approach helps Angular quickly identify which items have changed, been added, or removed, leading to better performance and a smoother user experience. By using a unique and constant identifier for each item, Angular can efficiently update only the parts of the DOM that need to be changed, rather than re-rendering the entire list.
+  </p>
+  
