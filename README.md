@@ -1,4 +1,5 @@
 # Angular17DirectiveNgFor
+![imagen](https://github.com/user-attachments/assets/5f93d662-5637-4a11-b17e-02978e732a91)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
